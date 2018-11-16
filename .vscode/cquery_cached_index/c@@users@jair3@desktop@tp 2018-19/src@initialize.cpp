@@ -42,6 +42,9 @@ static const char * btnm_side[] = {"main", "center", "safe", ""};
 static const char * btnm_color[] = {"red", "blue", ""};
 
 void initialize() {
+	//Cap motor initialize
+	cap_flip_mtr.move_absolute(0, 0);
+
 	//Background Style
 	static lv_style_t style_bg;
 	lv_style_copy(&style_bg, &lv_style_plain);

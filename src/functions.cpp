@@ -10,7 +10,8 @@ Motor right_front(4, E_MOTOR_GEARSET_18, true, E_MOTOR_ENCODER_DEGREES);
 
 Motor lift(5, E_MOTOR_GEARSET_18, false, E_MOTOR_ENCODER_ROTATIONS);
 
-Motor flywheel_mtr(7, E_MOTOR_GEARSET_18, false, E_MOTOR_ENCODER_ROTATIONS);
+Motor flywheel_b(7, E_MOTOR_GEARSET_18, false, E_MOTOR_ENCODER_ROTATIONS);
+Motor flywheel_a(6, E_MOTOR_GEARSET_18, true, E_MOTOR_ENCODER_ROTATIONS);
 
 Motor intake_mtr(8, E_MOTOR_GEARSET_18, true, E_MOTOR_ENCODER_ROTATIONS);
 
@@ -68,5 +69,6 @@ void capFlip(){
 
 void flyWheelSet(int velocity){
 
-	flywheel_mtr.move_velocity(velocity);
+	flywheel_a.move_velocity(velocity);
+	flywheel_b.move_velocity(velocity);
 }

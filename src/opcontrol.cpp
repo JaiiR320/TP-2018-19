@@ -35,7 +35,6 @@ void opcontrol(){
 			left_back.move(right * -1);
 			right_front.move(left * -1);
 			right_back.move(left * -1);
-
 		}
 
 		//Cap Flip
