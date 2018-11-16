@@ -1,7 +1,7 @@
 #include "main.h"
 
 Controller master(E_CONTROLLER_MASTER);
-Controller partner(E_CONTROLLER_MASTER);
+Controller partner(E_CONTROLLER_PARTNER);
 
 Motor left_back(1, E_MOTOR_GEARSET_18, false, E_MOTOR_ENCODER_DEGREES);
 Motor left_front(2, E_MOTOR_GEARSET_18, false, E_MOTOR_ENCODER_DEGREES);
