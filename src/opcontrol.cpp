@@ -6,15 +6,15 @@ Jair Meza
 #include "main.h"
 
 void opcontrol(){
-	double power, turn;
+	double left, right;
 	int side = 1;
 
 	while(true) {
 		cap_flip_mtr.set_zero_position(cap_flip_mtr.get_position());
 
 		//Drive
-		power = master.get_analog(ANALOG_LEFT_Y);
-		turn = master.get_analog(ANALOG_RIGHT_Y);
+		left = master.get_analog(ANALOG_LEFT_Y);
+		right = master.get_analog(ANALOG_RIGHT_Y);
 
 		if(master.get_digital(DIGITAL_UP) == 1){
 			side = -1;
@@ -23,8 +23,20 @@ void opcontrol(){
 			side = 1;
 		}
 
+		if(side == 1){
+			left_front.move(left);
+			left_back.move(left);
+			right_front.move(right);
+			right_back.move(right);
 
-		driveSpeed(power, turn, side);
+		}
+		else if(side == -1){
+			left_front.move(right * -1);
+			left_back.move(right * -1);
+			right_front.move(left * -1);
+			right_back.move(left * -1);
+
+		}
 
 		//Cap Flip
 		if(partner.get_digital(DIGITAL_A) == 1){
@@ -41,7 +53,7 @@ void opcontrol(){
 		else if(partner.get_digital(DIGITAL_R2) == 1){
 			liftSpeed(-127);
 		}
-		else{
+		else if(partner.get_digital(DIGITAL_R2) == 0){
 			liftSpeed(0);
 		}
 
