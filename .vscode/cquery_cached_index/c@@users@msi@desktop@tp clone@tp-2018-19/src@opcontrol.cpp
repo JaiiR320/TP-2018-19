@@ -23,19 +23,7 @@ void opcontrol(){
 			side = 1;
 		}
 
-		if(side == 1){
-			left_front.move(left);
-			left_back.move(left);
-			right_front.move(right);
-			right_back.move(right);
-
-		}
-		else if(side == -1){
-			left_front.move(right * -1);
-			left_back.move(right * -1);
-			right_front.move(left * -1);
-			right_back.move(left * -1);
-		}
+		driveSpeed(left, right, side);
 
 		//Cap Flip
 		if(partner.get_digital(DIGITAL_A) == 1){
@@ -44,7 +32,7 @@ void opcontrol(){
 				delay(5);
 			}
 		}
-
+/* LIFT NOT USED AT QUALS
 		//Lift
 		if(partner.get_digital(DIGITAL_R1) == 1){
 			liftSpeed(127);
@@ -55,7 +43,7 @@ void opcontrol(){
 		else if(partner.get_digital(DIGITAL_R2) == 0){
 			liftSpeed(0);
 		}
-
+*/
 		//Fly wheel set
 		if(partner.get_digital(DIGITAL_Y) == true){
 			flyWheelSet(120);

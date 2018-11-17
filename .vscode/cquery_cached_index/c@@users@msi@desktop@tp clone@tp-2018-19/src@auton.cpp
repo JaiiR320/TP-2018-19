@@ -17,6 +17,9 @@ void mainAuton(char color){
   stated and flips close cap to correct color
   */
 
+  //sets robot position/aim
+  driveDist(48.0, 120);
+
   //Shoot mid or high flag
   flyWheelSet(127);
   delay(2000);
@@ -24,9 +27,9 @@ void mainAuton(char color){
   delay(1500);
 
   //Toggle bottom
-  driveDist(42.0, 127);
+  driveDist(8.0, 127);
   delay(2500);
-  driveDist(-30.0, 127); //!!!!!!!!!!!   CHECK    !!!!!!!!!
+  driveDist(-28.0, 127); //!!!!!!!!!!!   CHECK    !!!!!!!!!
   delay(2000);
 
   //Side specific turn
