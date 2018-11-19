@@ -19,7 +19,7 @@ void opcontrol(){
 		driveSpeed(power + turn, power - turn, side);
 
 		liftSpeed(master.get_analog(ANALOG_RIGHT_Y));
-/*
+
 	if(master.get_digital(DIGITAL_DOWN) == 1){
 		side = -1;
 	}
@@ -34,7 +34,7 @@ void opcontrol(){
 				delay(5);
 			}
 		}
-LIFT NOT USED AT QUALS
+
 		//Lift
 		if(partner.get_digital(DIGITAL_R1) == 1){
 			liftSpeed(127);
@@ -64,7 +64,7 @@ LIFT NOT USED AT QUALS
 		else{
 			intake_mtr.move(0);
 		}
-*/
+
 		delay(20);
 	}
 }
