@@ -6,24 +6,26 @@ Jair Meza
 #include "main.h"
 
 void opcontrol(){
-	double left, right;
+	double power, turn;
 	int side = 1;
 
 	while(true) {
 		cap_flip_mtr.set_zero_position(cap_flip_mtr.get_position());
 
 		//Drive
-		left = master.get_analog(ANALOG_LEFT_Y);
-		right = master.get_analog(ANALOG_RIGHT_Y);
+		power = master.get_analog(ANALOG_LEFT_Y);
+		turn = master.get_analog(ANALOG_LEFT_X);
 
-		if(master.get_digital(DIGITAL_UP) == 1){
-			side = -1;
-		}
-		if(master.get_digital(DIGITAL_DOWN) == 1){
-			side = 1;
-		}
+		driveSpeed(power + turn, power - turn, side);
 
-		driveSpeed(left, right, side);
+		liftSpeed(master.get_analog(ANALOG_RIGHT_Y));
+/*
+	if(master.get_digital(DIGITAL_DOWN) == 1){
+		side = -1;
+	}
+	if(master.get_digital(DIGITAL_UP) == 1){
+		side = 1;
+	}
 
 		//Cap Flip
 		if(partner.get_digital(DIGITAL_A) == 1){
@@ -32,7 +34,7 @@ void opcontrol(){
 				delay(5);
 			}
 		}
-/* LIFT NOT USED AT QUALS
+LIFT NOT USED AT QUALS
 		//Lift
 		if(partner.get_digital(DIGITAL_R1) == 1){
 			liftSpeed(127);
@@ -43,7 +45,7 @@ void opcontrol(){
 		else if(partner.get_digital(DIGITAL_R2) == 0){
 			liftSpeed(0);
 		}
-*/
+
 		//Fly wheel set
 		if(partner.get_digital(DIGITAL_Y) == true){
 			flyWheelSet(120);
@@ -62,7 +64,7 @@ void opcontrol(){
 		else{
 			intake_mtr.move(0);
 		}
-
+*/
 		delay(20);
 	}
 }

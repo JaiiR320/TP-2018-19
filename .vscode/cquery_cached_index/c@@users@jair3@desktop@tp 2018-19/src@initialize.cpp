@@ -17,14 +17,13 @@ static lv_res_t side_sel(lv_obj_t * sideBTNS, const char *txt){
 	}
 	std::cout << "Auton: " << auton << '\n';
 
-  return LV_RES_OK; /*Return OK because the button matrix is not deleted*/
+  return LV_RES_INV; /*Return OK because the button matrix is not deleted*/
 }
 
 static lv_res_t col_sel(lv_obj_t * colorBTNS, const char *txt){
 	//occurs when color buttons are toggled
 	if (strcmp(txt, "red") == 0) {
 		color = 'r';
-
 	} else if (strcmp(txt, "blue") == 0){
 			color = 'b';
 	}	else {

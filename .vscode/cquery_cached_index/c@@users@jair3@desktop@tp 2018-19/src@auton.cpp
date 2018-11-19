@@ -11,40 +11,52 @@ void mainAuton(char color){
     m = -1;
   }
 
+  driveDist(38.0, 100);
+  delay(800);
+  driveTurn(90.0 * m, 70);
+  delay(500);
+  driveDist(24.0, 90);
+  delay(700);
+  liftSpeed(127);
+  delay(200);
+  liftSpeed(-20);
+  delay(200);
+  liftSpeed(0);
+
+
   /*
   Shoots a ball at one of the flags, drives forward
   to toggle bottom flag then turns depending on side
   stated and flips close cap to correct color
   */
+  //hit middle and bottom
+    /*flyWheelSet(180);
+    driveDist(-66.0, 120);
+    delay(1700);
+    driveDist(13.5, 100);
+    delay(1500);
+    driveTurn(-15 * m, 70);
+    delay(400);
+    intake_mtr = 127;
+    delay(800);
+    flyWheelSet(0);
 
-  //Shoot mid or high flag
-  flyWheelSet(127);
-  delay(2000);
-  intake_mtr = 127;
-  delay(1500);
+    //turn and drive into cap
+    driveTurn(65 * m, 70);
+    delay(500);
+    driveDist(15.0, 100);
+    delay(1000);
 
-  //Toggle bottom
-  driveDist(42.0, 127);
-  delay(2500);
-  driveDist(-30.0, 127); //!!!!!!!!!!!   CHECK    !!!!!!!!!
-  delay(2000);
 
-  //Side specific turn
-  driveTurn(90.0 * m, 100);
-  delay(1000);
+    driveTurn(50.0 * m, 60);
+    delay(500);
+    driveDist(16.0, 100);
+    delay(1500);
+    capFlip();
+    driveDist(0, 0);
+    driveSpeed(0, 0, 1);
 
-  //Arm down and capflip
-  liftSet(-225, 100); //down
-  delay(500);
-  driveDist(16.0, 127); //!!!!!!!!!!!   CHECK    !!!!!!!!!
-  delay(700);
-  liftSet(-100, 100); //up
-  capFlip(); //flip
-  delay(200);
-  liftSet(-230, 100); //down
-
-  //Drive back
-  driveDist(-14.0, 127); //!!!!!!!!!!!   CHECK    !!!!!!!!!
+    delay(15000);*/
 }
 
 void secondAuton(char color){
@@ -52,7 +64,6 @@ void secondAuton(char color){
   if(color == 'b'){
     m = -1;
   }
-
 }
 
 void safeAuton(char color){
@@ -61,24 +72,4 @@ void safeAuton(char color){
     m = -1;
   }
 
-  //Turn
-  driveTurn(36.9 * m, 100);
-  delay(700);
-
-  //lift drop and cap flip
-  liftSet(-225, 100);
-  delay(600);
-  driveDist(48.0, 100); //!!!!!!!!!!!   CHANGE    !!!!!!!!!
-  delay(2500);
-  liftSet(-100, 100);
-  capFlip();
-
-  //Allign with platform
-  driveDist(-8, 100); //!!!!!!!!!!!   CHANGE    !!!!!!!!!
-  delay(700);
-  driveTurn(53.1 * m, 100);
-  delay(500);
-  liftSet(-225, 100);
-  driveDist(-60, 120); //!!!!!!!!!!!   CHANGE    !!!!!!!!!
-  delay(3000);
 }

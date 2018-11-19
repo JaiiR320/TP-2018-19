@@ -3,12 +3,12 @@
 Controller master(E_CONTROLLER_MASTER);
 Controller partner(E_CONTROLLER_PARTNER);
 
-Motor left_back(1, E_MOTOR_GEARSET_18, false, E_MOTOR_ENCODER_DEGREES);
-Motor left_front(2, E_MOTOR_GEARSET_18, false, E_MOTOR_ENCODER_DEGREES);
-Motor right_back(3, E_MOTOR_GEARSET_18, true, E_MOTOR_ENCODER_DEGREES);
-Motor right_front(4, E_MOTOR_GEARSET_18, true, E_MOTOR_ENCODER_DEGREES);
+Motor left_back(2, E_MOTOR_GEARSET_18, false, E_MOTOR_ENCODER_DEGREES);
+Motor left_front(12, E_MOTOR_GEARSET_18, false, E_MOTOR_ENCODER_DEGREES);
+Motor right_back(1, E_MOTOR_GEARSET_18, true, E_MOTOR_ENCODER_DEGREES);
+Motor right_front(14, E_MOTOR_GEARSET_18, true, E_MOTOR_ENCODER_DEGREES);
 
-Motor lift(5, E_MOTOR_GEARSET_18, false, E_MOTOR_ENCODER_ROTATIONS);
+Motor lift(3, E_MOTOR_GEARSET_18, false, E_MOTOR_ENCODER_ROTATIONS);
 
 Motor flywheel_b(7, E_MOTOR_GEARSET_18, false, E_MOTOR_ENCODER_ROTATIONS);
 Motor flywheel_a(6, E_MOTOR_GEARSET_18, true, E_MOTOR_ENCODER_ROTATIONS);
@@ -16,7 +16,6 @@ Motor flywheel_a(6, E_MOTOR_GEARSET_18, true, E_MOTOR_ENCODER_ROTATIONS);
 Motor intake_mtr(8, E_MOTOR_GEARSET_18, true, E_MOTOR_ENCODER_ROTATIONS);
 
 Motor cap_flip_mtr(9, E_MOTOR_GEARSET_18, false, E_MOTOR_ENCODER_DEGREES);
-
 
 void driveSpeed(double left, double right, int side){
 	if(side == 1){
@@ -26,7 +25,7 @@ void driveSpeed(double left, double right, int side){
 		right_back.move(right);
 
 	}
-	if(side == -1){
+	else if(side == -1){
 		left_front.move(right * -1);
 		left_back.move(right * -1);
 		right_front.move(left * -1);
@@ -40,18 +39,20 @@ void driveDist(float dist, int speed){ //IMPORTANT, Distance in Inches
 
 	left_front.move_relative(dist, speed);
 	left_back.move_relative(dist, speed);
-	right_front.move_relative(-dist, speed);
-	right_back.move_relative(-dist, speed);
+	right_front.move_relative(dist, speed);
+	right_back.move_relative(dist, speed);
 
 }
 
 void driveTurn(double degrees, int speed){ //Pos degrees turns right
-	double dist = degrees;
+	double arclength = 2 * 3.141592653589793 * 7 * (degrees / 360);
+
+	double dist = (arclength / 12.566) * 360;
 
 	left_front.move_relative(dist, speed);
 	left_back.move_relative(dist, speed);
-	right_front.move_relative(dist, speed);
-	right_back.move_relative(dist, speed);
+	right_front.move_relative(-dist, speed);
+	right_back.move_relative(-dist, speed);
 
 }
 
@@ -68,7 +69,6 @@ void capFlip(){
 }
 
 void flyWheelSet(int velocity){
-
-	flywheel_a.move_velocity(velocity);
-	flywheel_b.move_velocity(velocity);
+	flywheel_a.move(velocity);
+	flywheel_b.move(velocity);
 }

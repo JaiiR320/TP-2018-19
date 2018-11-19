@@ -3,12 +3,12 @@
 Controller master(E_CONTROLLER_MASTER);
 Controller partner(E_CONTROLLER_PARTNER);
 
-Motor left_back(1, E_MOTOR_GEARSET_18, false, E_MOTOR_ENCODER_DEGREES);
-Motor left_front(2, E_MOTOR_GEARSET_18, false, E_MOTOR_ENCODER_DEGREES);
-Motor right_back(3, E_MOTOR_GEARSET_18, true, E_MOTOR_ENCODER_DEGREES);
-Motor right_front(4, E_MOTOR_GEARSET_18, true, E_MOTOR_ENCODER_DEGREES);
+Motor left_back(2, E_MOTOR_GEARSET_18, false, E_MOTOR_ENCODER_DEGREES);
+Motor left_front(12, E_MOTOR_GEARSET_18, false, E_MOTOR_ENCODER_DEGREES);
+Motor right_back(1, E_MOTOR_GEARSET_18, true, E_MOTOR_ENCODER_DEGREES);
+Motor right_front(14, E_MOTOR_GEARSET_18, true, E_MOTOR_ENCODER_DEGREES);
 
-Motor lift(5, E_MOTOR_GEARSET_18, false, E_MOTOR_ENCODER_ROTATIONS);
+Motor lift(3, E_MOTOR_GEARSET_18, false, E_MOTOR_ENCODER_ROTATIONS);
 
 Motor flywheel_b(7, E_MOTOR_GEARSET_18, false, E_MOTOR_ENCODER_ROTATIONS);
 Motor flywheel_a(6, E_MOTOR_GEARSET_18, true, E_MOTOR_ENCODER_ROTATIONS);
@@ -39,20 +39,20 @@ void driveDist(float dist, int speed){ //IMPORTANT, Distance in Inches
 
 	left_front.move_relative(dist, speed);
 	left_back.move_relative(dist, speed);
-	right_front.move_relative(-dist, speed);
-	right_back.move_relative(-dist, speed);
+	right_front.move_relative(dist, speed);
+	right_back.move_relative(dist, speed);
 
 }
 
 void driveTurn(double degrees, int speed){ //Pos degrees turns right
-	double arclength = 2 * 3.1415926 * 12.566 * (degrees / 360);
+	double arclength = 2 * 3.141592653589793 * 7 * (degrees / 360);
 
 	double dist = (arclength / 12.566) * 360;
 
 	left_front.move_relative(dist, speed);
 	left_back.move_relative(dist, speed);
-	right_front.move_relative(dist, speed);
-	right_back.move_relative(dist, speed);
+	right_front.move_relative(-dist, speed);
+	right_back.move_relative(-dist, speed);
 
 }
 
