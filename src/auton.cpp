@@ -11,26 +11,13 @@ void mainAuton(char color){
     m = -1;
   }
 
-  driveDist(38.0, 100);
-  delay(800);
-  driveTurn(90.0 * m, 70);
-  delay(500);
-  driveDist(24.0, 90);
-  delay(700);
-  liftSpeed(127);
-  delay(200);
-  liftSpeed(-20);
-  delay(200);
-  liftSpeed(0);
-
-
   /*
   Shoots a ball at one of the flags, drives forward
   to toggle bottom flag then turns depending on side
   stated and flips close cap to correct color
   */
   //hit middle and bottom
-    /*flyWheelSet(180);
+    flyWheelSet(180);
     driveDist(-66.0, 120);
     delay(1700);
     driveDist(13.5, 100);
@@ -47,7 +34,7 @@ void mainAuton(char color){
     driveDist(15.0, 100);
     delay(1000);
 
-
+    //get other cap
     driveTurn(50.0 * m, 60);
     delay(500);
     driveDist(16.0, 100);
@@ -56,7 +43,7 @@ void mainAuton(char color){
     driveDist(0, 0);
     driveSpeed(0, 0, 1);
 
-    delay(15000);*/
+    delay(15000);
 }
 
 void secondAuton(char color){
@@ -64,6 +51,7 @@ void secondAuton(char color){
   if(color == 'b'){
     m = -1;
   }
+  //Make an auton to descore some flags on opponent side
 }
 
 void safeAuton(char color){
@@ -71,5 +59,5 @@ void safeAuton(char color){
   if(color == 'b'){
     m = -1;
   }
-
+  //far flag side
 }
