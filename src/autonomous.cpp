@@ -7,8 +7,4 @@ void autonomous() {
     case 3: safeAuton(color);
     case 0: delay(20);
   }
-  if(COMPETITION_AUTONOMOUS == true){
-    delay(20);
-    auton = 0;
-  }
 }
