@@ -17,45 +17,6 @@ Motor intake_mtr(8, E_MOTOR_GEARSET_18, true, E_MOTOR_ENCODER_ROTATIONS);
 
 Motor cap_flip_mtr(9, E_MOTOR_GEARSET_18, false, E_MOTOR_ENCODER_DEGREES);
 
-void driveSpeed(double left, double right, int side){
-	if(side == 1){
-		left_front.move(left);
-		left_back.move(left);
-		right_front.move(right);
-		right_back.move(right);
-
-	}
-	else if(side == -1){
-		left_front.move(right * -1);
-		left_back.move(right * -1);
-		right_front.move(left * -1);
-		right_back.move(left * -1);
-
-	}
-}
-
-void driveDist(float dist, int speed){ //IMPORTANT, Distance in Inches
-	dist = ((dist / 12.566) * 360);    //Converts desired inches into degrees
-
-	left_front.move_relative(dist, speed);
-	left_back.move_relative(dist, speed);
-	right_front.move_relative(dist, speed);
-	right_back.move_relative(dist, speed);
-
-}
-
-void driveTurn(double degrees, int speed){ //Pos degrees turns right
-	double arclength = 2 * 3.141592653589793 * 7 * (degrees / 360);
-
-	double dist = (arclength / 12.566) * 360;
-
-	left_front.move_relative(dist, speed);
-	left_back.move_relative(dist, speed);
-	right_front.move_relative(-dist, speed);
-	right_back.move_relative(-dist, speed);
-
-}
-
 void liftSpeed(int speed){
 	lift.move(speed);
 }

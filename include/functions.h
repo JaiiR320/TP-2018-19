@@ -21,12 +21,6 @@ extern Motor intake_mtr;
 
 extern Motor cap_flip_mtr;
 
-void driveSpeed(double left, double right, int side);
-
-void driveDist(float dist, int speed); // in inches, linear distnance
-
-void driveTurn(double degrees, int speed);
-
 void liftSpeed(int speed);
 
 void liftSet(int pos, int speed);

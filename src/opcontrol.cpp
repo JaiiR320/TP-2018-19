@@ -4,7 +4,6 @@ Jair Meza
 1784X
 */
 #include "main.h"
-
 void opcontrol(){
 	double power, turn;
 	int side = 1;
@@ -16,16 +15,16 @@ void opcontrol(){
 		power = master.get_analog(ANALOG_LEFT_Y);
 		turn = master.get_analog(ANALOG_LEFT_X);
 
-		driveSpeed(power + turn, power - turn, side);
+		drive.speed(power + turn, power - turn, side);
 
 		liftSpeed(master.get_analog(ANALOG_RIGHT_Y));
 
-	if(master.get_digital(DIGITAL_DOWN) == 1){
-		side = -1;
-	}
-	if(master.get_digital(DIGITAL_UP) == 1){
-		side = 1;
-	}
+		if(master.get_digital(DIGITAL_DOWN) == 1){
+			side = -1;
+		}
+		if(master.get_digital(DIGITAL_UP) == 1){
+			side = 1;
+		}
 
 		//Cap Flip
 		if(partner.get_digital(DIGITAL_A) == 1){
